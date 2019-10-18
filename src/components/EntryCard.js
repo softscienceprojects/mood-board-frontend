@@ -3,14 +3,25 @@ import { Card } from 'semantic-ui-react'
 
 class EntryCard extends React.Component {
 
+    state = ({
+        cardType: true,
+        color: 'yellow'
+    //    color: `#${this.props.entry.colours}`
+    })
+
+    changeCardType=()=>{
+        this.setState({ cardType: !this.state.cardType })
+    }
+
     render(){
         return <div>
-            this is entry card
-            <Card>
-            <div className="content">
-            <div className="header">{this.props.entry.message}</div>
-          </div>
+            <Card.Group itemsPerRow={4}>
+            <Card color={this.state.color}>
+            <div className="content"  onClick={this.changeCardType}>
+                <div className="header" >{this.state.cardType? this.props.entry.colours : this.props.entry.message} </div>
+            </div>
             </Card>
+            </Card.Group>
             
         </div>
     }
