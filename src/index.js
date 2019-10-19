@@ -4,8 +4,23 @@ import './index.css';
 import App from './App';
 import 'semantic-ui-css/semantic.min.css'
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Main from './components/Main'
+import EntryForm from './components/EntryForm'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+
+// ReactDOM.render(<App />, document.getElementById('root'));
+
+ReactDOM.render((
+    <Router>
+      <Route path="/" component={App} />
+      <Route exact path="/you" component={Main} />
+      <Route exact path="/new" component={EntryForm} />
+
+    </Router>),
+    document.getElementById('root')
+  );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

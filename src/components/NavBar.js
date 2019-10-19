@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import EntryForm from './EntryForm'
 
+
 class NavBar extends React.Component {
 
     render(){
