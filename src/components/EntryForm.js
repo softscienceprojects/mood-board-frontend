@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import { Form } from 'semantic-ui-react'
 
+const BASE_URL = 'http://localhost:3000/'
+
+
 class EntryForm extends React.Component {
     state ={
         message: '',
@@ -26,16 +29,17 @@ class EntryForm extends React.Component {
 
 
     handleSubmit=(event)=>{
-        console.log(this.state)
+        event.preventDefault();
 
         let configObj = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify(this.state)
         };
-        return fetch('http://localhost:3000/entries', configObj ).then(response => response.json());
+        return fetch('http://localhost:3000/entries', configObj ).then(response => response.json()).then(console.log);
     }
 
 
@@ -48,9 +52,9 @@ class EntryForm extends React.Component {
             <Form.Input fluid label="Message" placeholder="Message" value={this.state.message} name="message" onChange={this.handleChange}/>
             <Form.Input fluid label="Category" placeholder="category" value={this.state.category} name="category" onChange={this.handleChange}/>
             {/* <Form.Input fluid label="Public or Private?" placeholder="public" value={this.state.public} name="public" /> */}
-            <div class='inline field'>
-                <div class='ui toggle checkbox'>
-                    <input type='checkbox' tabindex='0' defaultChecked={true} name='public' value={this.state.public} onChange={this.handlePublicChange}/>
+            <div className='inline field'>
+                <div className='ui toggle checkbox'>
+                    <input type='checkbox' tabIndex='0' defaultChecked={true} name='public' value={this.state.public} onChange={this.handlePublicChange}/>
                     <label>Public?</label>
                 </div>
             </div>
