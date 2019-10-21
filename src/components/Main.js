@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import AllContainer from './AllContainer'
 import NavBar from './NavBar'
+import EntryForm from './EntryForm';
 
 const entryURL = 'http://localhost:3000/entries'
 
@@ -14,7 +15,7 @@ class Main extends React.Component {
         fetch(entryURL).then(resp=>resp.json()).then(entries=> this.setState({entries}))
     }
 
-    updateOnClient = (resp) => {
+    pushNewEntryToState = (resp) => {
         this.setState({
             entries: [...this.state.entries, resp]
         })
@@ -24,7 +25,8 @@ class Main extends React.Component {
         return <div>
             <NavBar/>
             This is Main
-            <AllContainer entries={this.state.entries} updateOnClient={this.updateOnClient} />
+            <EntryForm pushNewEntryToState={this.pushNewEntryToState} />
+            <AllContainer entries={this.state.entries}  />
         </div>
     }
 

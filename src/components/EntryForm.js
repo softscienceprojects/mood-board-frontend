@@ -48,7 +48,7 @@ class EntryForm extends React.Component {
             category: '',
             public: true
         })
-        console.log(json)
+        this.props.pushNewEntryToState(json)
     }
 
 
