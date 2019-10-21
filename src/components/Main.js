@@ -4,15 +4,18 @@ import NavBar from './NavBar'
 import EntryForm from './EntryForm';
 
 const entryURL = 'http://localhost:3000/entries'
+const categoryURL = 'http://localhost:3000/categories'
 
 class Main extends React.Component {
 
     state = {
-        entries: []
+        entries: [],
+        categories: []
     }
 
     componentDidMount(){
-        fetch(entryURL).then(resp=>resp.json()).then(entries=> this.setState({entries}))
+        fetch(entryURL).then(resp=>resp.json()).then(entries=> this.setState({entries}));
+        fetch(categoryURL).then(resp=>resp.json()).then(categories=> this.setState({categories}))
     }
 
     pushNewEntryToState = (resp) => {
@@ -21,11 +24,16 @@ class Main extends React.Component {
         })
     }
 
+    getUniqueCategoryTypes = () => {
+        const uniqueCats = [...new Set(this.state.categories.map(cat => cat.category_name))];
+        return uniqueCats.sort()
+    };
+
     render(){
         return <div>
             <NavBar/>
             This is Main
-            <EntryForm pushNewEntryToState={this.pushNewEntryToState} />
+            <EntryForm pushNewEntryToState={this.pushNewEntryToState} filterCategories = {this.getUniqueCategoryTypes()} />
             <AllContainer entries={this.state.entries}  />
         </div>
     }
