@@ -15,16 +15,15 @@ class EntryCard extends React.Component {
 
 
     render(){
-        let colourString = { backgroundColor: this.state.color }
+        let colourString = { backgroundColor: this.props.entry.colours }
         return <div>
-            <Card.Group itemsPerRow={4}>
-            <Card color={this.state.color} >
-            {/* <Card> */}
-            <div className="content"  onClick={this.changeCardType}>
+            {/* <Card.Group itemsPerRow={4}>
+            <Card> */}
+            <div className="entry-card"  onClick={this.changeCardType} style={{backgroundColor: `#${this.props.entry.colours}`}}>
                 <div className="header" >{this.state.cardType? this.props.entry.colours : this.props.entry.message} </div>
             </div>
-            </Card>
-            </Card.Group>
+            {/* </Card>
+            </Card.Group> */}
             
         </div>
     }
