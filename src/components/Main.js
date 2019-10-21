@@ -14,11 +14,17 @@ class Main extends React.Component {
         fetch(entryURL).then(resp=>resp.json()).then(entries=> this.setState({entries}))
     }
 
+    updateOnClient = (resp) => {
+        this.setState({
+            entries: [...this.state.entries, resp]
+        })
+    }
+
     render(){
         return <div>
             <NavBar/>
             This is Main
-            <AllContainer entries={this.state.entries}/>
+            <AllContainer entries={this.state.entries} updateOnClient={this.updateOnClient} />
         </div>
     }
 
