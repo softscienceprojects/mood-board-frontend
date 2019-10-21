@@ -22,7 +22,7 @@ class Main extends React.Component {
     }
 
     render(){
-        return <div>
+        return <div className="main-container">
             <NavBar/>
             This is Main
             <EntryForm pushNewEntryToState={this.pushNewEntryToState} />

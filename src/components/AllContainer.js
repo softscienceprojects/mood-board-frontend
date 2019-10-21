@@ -4,7 +4,7 @@ import BoardList from './BoardList'
 class AllContainer extends React.Component {
 
     render(){
-        return <div>
+        return <div class="all-container">
             This is AllContainer
             <BoardList entries={this.props.entries}/>
         </div>

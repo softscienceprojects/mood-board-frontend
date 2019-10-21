@@ -20,7 +20,7 @@ class EntryCard extends React.Component {
             {/* <Card.Group itemsPerRow={4}>
             <Card> */}
             <div className="entry-card"  onClick={this.changeCardType} style={{backgroundColor: `#${this.props.entry.colours}`}}>
-                <div className="header" >{this.state.cardType? this.props.entry.colours : this.props.entry.message} </div>
+                <div className="header" >{this.state.cardType? " " : this.props.entry.message} </div>
             </div>
             {/* </Card>
             </Card.Group> */}
