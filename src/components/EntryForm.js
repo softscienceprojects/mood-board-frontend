@@ -56,6 +56,7 @@ class EntryForm extends React.Component {
             <div class="field">
                 <label>Category</label>
                 <select class="ui fluid dropdown" name='category' onChange={this.handleChange}>
+                        <option default>Select</option>
                         {this.props.filterCategories.map(filterCategory => (
                         <option key={filterCategory} value={filterCategory} >
                     {filterCategory}
