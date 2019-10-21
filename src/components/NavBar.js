@@ -7,7 +7,7 @@ class NavBar extends React.Component {
     render(){
         return <div>
             This is NavBar
-            <EntryForm/>
+            
         </div>
     }
 
