@@ -39,7 +39,16 @@ class EntryForm extends React.Component {
             },
             body: JSON.stringify(this.state)
         };
-        return fetch('http://localhost:3000/entries', configObj ).then(response => response.json()).then(console.log);
+        return fetch('http://localhost:3000/entries', configObj ).then(response => response.json()).then(resp => this.updateOnClient(resp));
+    }
+
+    updateOnClient = (json) => {
+        this.setState({
+            message: '',
+            category: '',
+            public: true
+        })
+        console.log(json)
     }
 
 
