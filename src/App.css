@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  display: flexbox;
+  justify-content: space-around;
 }
 
 .App-logo {
@@ -18,12 +18,48 @@
   color: white;
 }
 
-.App-link {
+/* .App-link {
   color: #09d3ac;
+} */
+
+.all-container {
+  margin: 5em;
+}
+
+.main-container {
+  margin: 10px;
+}
+
+.nav-bar {
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  display: inline-block;
+}
+
+.nav-bar img {
+  width: 100px;
+  height: auto;
+}
+
+.nav-bar ul li {
+  display: inline;
+}
+
+.board-list {
+ display: inline-flex;
+ flex-wrap: wrap;
+ align-items: center;
 }
 
 .entry-card {
-  
-  border: 1px solid black;
-  max-width: 200px;
+  font-size: 1.2em;
+  margin: 10px;
+  padding: 5px;
+  height: 10em;
+  width: 10em;
+  color: #fff;
+  font-weight: 900;
+  /* -webkit-text-stroke: 1px #eee; */
+
 }
