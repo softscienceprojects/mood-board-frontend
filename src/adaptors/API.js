@@ -2,6 +2,7 @@ const baseURL = 'http://localhost:3000/'
 const signInURL = baseURL + 'login'
 const validateURL = baseURL + 'validate'
 const youURL = baseURL + 'you'
+const newUsersURL = baseURL + 'users'
 
 
 const post = (url, data) =>
@@ -25,8 +26,9 @@ const get = url => fetch(url, {
 const signIn = user => post(signInURL, user )
 const validate = () => get(validateURL)
 const getYou = () => get(youURL)
+const signUp = (user) => post(newUsersURL, user)
 
-window.validate = validate
+window.validate = validate //what does this do?
 
 
-export default { signIn, validate, getYou }
+export default { signIn, validate, getYou, signUp }
