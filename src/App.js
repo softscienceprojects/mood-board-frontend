@@ -67,7 +67,7 @@ class App extends React.Component {
        
         <Switch>
             <Route exact path='/' component={() => 
-              <Main currentUser = {this.state.email} signOut = {this.signOut} currentUser ={this.state.email} takeToSignInForm={this.takeToSignInForm}
+              <Main currentUser = {this.state.email} signOut = {this.signOut} takeToSignInForm={this.takeToSignInForm}
               entries={this.state.entries} pushNewEntryToState={this.pushNewEntryToState} filterCategories = {this.getUniqueCategoryTypes()}
               /> } />
             
