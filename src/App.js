@@ -1,9 +1,13 @@
 import React from 'react';
 import './App.css';
-import Main from './components/Main'
 import NavBar from './components/NavBar'
+import Main from './components/Main'
+import You from './components/You'
+import PrivateRoute from './adaptors/PrivateRoute'
 
-import { Route, withRouter, Switch } from 'react-router-dom'
+
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, withRouter } from 'react-router-dom'
+
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
 import API from './adaptors/API'
@@ -28,11 +32,11 @@ class App extends React.Component {
             throw Error(data.error)
           } else {
             this.signIn(data)
-            this.props.history.push('/')
+            this.props.history.push('/you')
           }
         })
         .catch(error => {
-          console.error("you're not logged in")
+          console.error(error)
         })
     }
   }
@@ -55,6 +59,7 @@ class App extends React.Component {
   signOut = () => { 
     this.setState({ email: ''}) 
     localStorage.removeItem('token')
+    this.props.history.push('/') 
   }
 
   takeToSignInForm = () => { 
@@ -62,17 +67,18 @@ class App extends React.Component {
   }
 
  
-
   render () {
     return (
       <div className="App">
-      <NavBar currentUser ={this.state.email} signOut = {this.signOut} takeToSignInForm={this.takeToSignInForm} />
+      <NavBar currentUser={this.state.email} signOut={this.signOut} takeToSignInForm={this.takeToSignInForm} />
 
         <Switch>
-            <Route exact path='/' component={() => 
-              <Main currentUser = {this.state.email} signOut = {this.signOut} takeToSignInForm={this.takeToSignInForm}
-              entries={this.state.entries} pushNewEntryToState={this.pushNewEntryToState} filterCategories = {this.getUniqueCategoryTypes()}
-              /> } />
+              <PrivateRoute exact path='/you' >
+                {this.state.email? <Redirect to="/login" /> : <You currentUser = {this.state.email} signOut = {this.signOut}
+             entries={this.state.entries} pushNewEntryToState={this.pushNewEntryToState} filterCategories = {this.getUniqueCategoryTypes()}
+              />}                
+              </PrivateRoute>
+              
             
             <Route
               path='/login'
@@ -83,9 +89,12 @@ class App extends React.Component {
             <Route
               path='/signup'
               component={routerProps => (
-              < SignupForm {...routerProps} /> )}
-              
+              <SignupForm {...routerProps} /> )}
             />
+            <Route exact path='/' component={() => 
+            <Main currentUser = {this.state.email} signOut = {this.signOut} takeToSignInForm={this.takeToSignInForm}
+              entries={this.state.entries} pushNewEntryToState={this.pushNewEntryToState} filterCategories = {this.getUniqueCategoryTypes()}
+              /> } />
           </Switch>
        
       </div>
