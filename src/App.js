@@ -30,7 +30,7 @@ class App extends React.Component {
           }
         })
         .catch(error => {
-          alert("you're not logged in")
+          console.error("you're not logged in")
         })
     }
   }
