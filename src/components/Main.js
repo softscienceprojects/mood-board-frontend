@@ -31,7 +31,7 @@ class Main extends React.Component {
 
     render(){
         return <div className="main-container">
-            <NavBar/>
+            <NavBar currentUser ={this.props.currentUser} signOut = {this.props.signOut} takeToSignInForm={this.props.takeToSignInForm}/>
             This is Main
             <EntryForm pushNewEntryToState={this.pushNewEntryToState} filterCategories = {this.getUniqueCategoryTypes()} />
             <AllContainer entries={this.state.entries}  />

@@ -16,12 +16,18 @@ class App extends React.Component {
     localStorage.setItem('token', user.token)
   }
 
+  signOut = () => this.setState({ email: ''})
+
+  takeToSignInForm = () => this.history.push('/login') // THIS DOESN'T WORK YET
+
   render () {
     return (
       <div className="App">
-        
+       
         <Switch>
-            <Route exact path='/' component={() => <h1>This is homepage</h1>} />
+            <Route exact path='/' component={() => 
+              <Main currentUser = {this.state.email} signOut = {this.signOut} currentUser ={this.state.email} takeToSignInForm={this.takeToSignInForm}/> } />
+            
             <Route
               path='/login'
               component={routerProps => (
@@ -31,13 +37,11 @@ class App extends React.Component {
             <Route
               path='/signup'
               component={routerProps => (
-              < SignupForm /> )}
+              < SignupForm {...routerProps} /> )}
               
             />
-            <Route component={() => <h1>Page not found.</h1>} />
           </Switch>
-
-      <Main />
+       
       </div>
     )
   }  

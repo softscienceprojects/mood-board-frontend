@@ -1,8 +1,7 @@
 import React from 'react'
 
-// import TextField from '@material-ui/core/TextField'
-// import Button from '@material-ui/core/Button'
-// import FormControl from '@material-ui/core/FormControl'
+import { Button } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 
 import API from '../adaptors/API'
 
@@ -14,14 +13,14 @@ class LoginForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { email, password } = this.state
-    API.signIn({ email, password })
+    
+    API.signIn(this.state)
       .then(data => {
         if (data.error) {
           throw Error(data.error)
         } else {
           this.props.signIn(data)
-        //   this.props.history.push('/entries')  THIS ROUTE WILL NEED TO BE CREATED / CHANGED IN ORDER TO WORK
+          this.props.history.push('/')   // CHANGE THIS URL TO WHATEVER YOU WANT TO REDIRECT TO WHEN SIGNED IN
         }
       })
       .catch(error => {
@@ -37,7 +36,7 @@ class LoginForm extends React.Component {
     const { handleChange, handleSubmit } = this
 
     return (
-      <form>
+      <Form onSubmit={handleSubmit}>
        <input type='text'
           id='emailInput'
           label='Email'
@@ -57,10 +56,8 @@ class LoginForm extends React.Component {
           placeholder='password'
         />
         <br />
-        <button onClick={handleSubmit} >
-          Log In
-        </button>
-      </form>
+        <Button> Log In </Button>
+      </Form>
     )
   }
 }
