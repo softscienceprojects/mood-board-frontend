@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import AllContainer from './AllContainer'
-import EntryForm from './EntryForm';
+//import EntryForm from './EntryForm';
 
 
 class Main extends Component {
@@ -8,9 +8,7 @@ class Main extends Component {
 
     render(){
         return <div className="main-container">
-            {this.props.currentUser}
-            <EntryForm pushNewEntryToState={this.props.pushNewEntryToState} filterCategories = {this.props.filterCategories} />
-            <AllContainer entries={this.props.entries}  />
+         <AllContainer entries={this.props.entries}  />
         </div>
     }
 
