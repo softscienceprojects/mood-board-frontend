@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { Button } from 'semantic-ui-react'
+import {   Link, Redirect } from 'react-router-dom'
+
 // import EntryForm from './EntryForm'
 
 class NavBar extends Component {
