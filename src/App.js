@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import Main from './components/Main'
+import NavBar from './components/NavBar'
+
 import { Route, withRouter, Switch } from 'react-router-dom'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
@@ -64,7 +66,8 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
-       
+      <NavBar currentUser ={this.state.email} signOut = {this.signOut} takeToSignInForm={this.takeToSignInForm} />
+
         <Switch>
             <Route exact path='/' component={() => 
               <Main currentUser = {this.state.email} signOut = {this.signOut} takeToSignInForm={this.takeToSignInForm}
