@@ -2,7 +2,7 @@ const baseURL = 'http://localhost:3000/'
 const signInURL = baseURL + 'login'
 const validateURL = baseURL + 'validate'
 const youURL = baseURL + 'you'
-const newUsersURL = baseURL + 'users'
+const newUsersURL = baseURL + 'signup'
 
 
 const post = (url, data) =>
