@@ -4,8 +4,8 @@ import './index.css';
 import App from './App';
 import 'semantic-ui-css/semantic.min.css'
 import * as serviceWorker from './serviceWorker';
-import Main from './components/Main'
-import EntryForm from './components/EntryForm'
+// import Main from './components/Main'
+// import EntryForm from './components/EntryForm'
 import { BrowserRouter } from 'react-router-dom'
 
 
