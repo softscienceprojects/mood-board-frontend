@@ -1,17 +1,16 @@
 import React from 'react';
 import './App.css';
-import NavBar from './components/NavBar'
-import Main from './components/Main'
-import You from './components/You'
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, withRouter } from 'react-router-dom'
 import PrivateRoute from './adaptors/PrivateRoute'
 
 
-import { BrowserRouter as Router, Switch, Route, Link, Redirect, withRouter } from 'react-router-dom'
-
+import NavBar from './components/NavBar'
+import Main from './components/Main'
+import You from './components/You'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
-import API from './adaptors/API'
 
+import API from './adaptors/API'
 const entryURL = 'http://localhost:3000/entries'
 const categoryURL = 'http://localhost:3000/categories'
 
@@ -32,7 +31,7 @@ class App extends React.Component {
             throw Error(data.error)
           } else {
             this.signIn(data)
-            this.props.history.push('/you')
+            this.props.history.push('/')
           }
         })
         .catch(error => {
@@ -73,28 +72,28 @@ class App extends React.Component {
       <NavBar currentUser={this.state.email} signOut={this.signOut} takeToSignInForm={this.takeToSignInForm} />
 
         <Switch>
-              <PrivateRoute exact path='/you' >
-                {this.state.email? <Redirect to="/login" /> : <You currentUser = {this.state.email} signOut = {this.signOut}
-             entries={this.state.entries} pushNewEntryToState={this.pushNewEntryToState} filterCategories = {this.getUniqueCategoryTypes()}
-              />}                
-              </PrivateRoute>
-              
-            
-            <Route
-              path='/login'
-              component={routerProps => (
-                <LoginForm {...routerProps} signIn={this.signIn} />
-              )}
-            />
-            <Route
-              path='/signup'
-              component={routerProps => (
-              <SignupForm {...routerProps} /> )}
-            />
             <Route exact path='/' component={() => 
             <Main currentUser = {this.state.email} signOut = {this.signOut} takeToSignInForm={this.takeToSignInForm}
               entries={this.state.entries} pushNewEntryToState={this.pushNewEntryToState} filterCategories = {this.getUniqueCategoryTypes()}
               /> } />
+            
+            <Route path='/login'
+              component={routerProps => (<LoginForm {...routerProps} signIn={this.signIn} />
+              )}
+            />
+            <Route path='/signup'
+              component={routerProps => (<SignupForm {...routerProps} /> )}
+            />
+
+            <PrivateRoute path='/you' >
+                {this.state.email? <Redirect to="/login" /> : <You currentUser = {this.state.email} signOut = {this.signOut}
+             entries={this.state.entries} pushNewEntryToState={this.pushNewEntryToState} filterCategories = {this.getUniqueCategoryTypes()}
+              />}                
+             {/* <You currentUser = {this.state.email} signOut = {this.signOut}
+             entries={this.state.entries} pushNewEntryToState={this.pushNewEntryToState} filterCategories = {this.getUniqueCategoryTypes()}
+              /> */}
+            </PrivateRoute>
+
           </Switch>
        
       </div>
