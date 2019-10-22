@@ -6,22 +6,19 @@ import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
 import API from './adaptors/API'
 
+const entryURL = 'http://localhost:3000/entries'
+const categoryURL = 'http://localhost:3000/categories'
+
 class App extends React.Component {
   state = {
-    email: ''
-  }
-
-  signIn = user => {
-    this.setState({ email: user.email }, () => localStorage.setItem('token', user.token))
-
-  }
-
-  signOut = () => { 
-    this.setState({ email: ''}) 
-    localStorage.removeItem('token')
+    email: '', 
+    entries: [],
+    categories: []
   }
 
   componentDidMount(){
+    fetch(entryURL).then(resp=>resp.json()).then(entries=> this.setState({entries}));
+    fetch(categoryURL).then(resp=>resp.json()).then(categories=> this.setState({categories}))
     if (localStorage.getItem('token') !== undefined) {
       API.validate()
         .then(data => {
@@ -38,6 +35,27 @@ class App extends React.Component {
     }
   }
 
+  pushNewEntryToState = (resp) => {
+    this.setState({
+        entries: [...this.state.entries, resp]
+    })
+  }
+
+  getUniqueCategoryTypes = () => {
+    const uniqueCats = [...new Set(this.state.categories.map(cat => cat.category_name))];
+    return uniqueCats.sort()
+  };
+
+  signIn = user => {
+    this.setState({ email: user.email }, () => localStorage.setItem('token', user.token))
+
+  }
+
+  signOut = () => { 
+    this.setState({ email: ''}) 
+    localStorage.removeItem('token')
+  }
+
   takeToSignInForm = () => { 
     this.props.history.push('/login') 
   }
@@ -48,7 +66,8 @@ class App extends React.Component {
        
         <Switch>
             <Route exact path='/' component={() => 
-              <Main currentUser = {this.state.email} signOut = {this.signOut} currentUser ={this.state.email} takeToSignInForm={this.takeToSignInForm}/> } />
+              <Main currentUser = {this.state.email} signOut = {this.signOut} currentUser ={this.state.email} takeToSignInForm={this.takeToSignInForm}
+              entries={this.state.entries} pushNewEntryToState={this.pushNewEntryToState} filterCategories = {this.getUniqueCategoryTypes()}/> } />
             
             <Route
               path='/login'
