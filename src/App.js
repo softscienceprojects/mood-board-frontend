@@ -12,13 +12,20 @@ class App extends React.Component {
   }
 
   signIn = user => {
-    this.setState({ email: user.email })
-    localStorage.setItem('token', user.token)
+    this.setState({ email: user.email }, () => localStorage.setItem('token', user.id))
+
   }
 
-  signOut = () => this.setState({ email: ''})
+  signOut = () => { 
+    this.setState({ email: ''}) 
+    localStorage.removeItem('token')
+  }
 
-  takeToSignInForm = () => this.history.push('/login') // THIS DOESN'T WORK YET
+  takeToSignInForm = () => { 
+    console.log('hello')
+    this.history.push('/login') // THIS DOESN'T WORK YET
+
+  }
 
   render () {
     return (

@@ -7,13 +7,10 @@ class NavBar extends React.Component {
     render(){
         return <div className="nav-bar">
            
-           <ul> 
-                <li><img src={process.env.PUBLIC_URL + 'moodboardlogo.png'} /></li>
-                <li> </li>
-            </ul>
+           <img src={process.env.PUBLIC_URL + 'moodboardlogo.png'} />
             {this.props.currentUser !== '' 
                 ? <Button onClick = {this.props.signOut} >Sign Out</Button>
-                : <Button onClick = {this.props.takeToSignInForm} >Sign In</Button>
+                : <Button onClick = {this.props.takeToSignInForm} >Log In</Button>
             }   
             
             
