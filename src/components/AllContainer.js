@@ -15,7 +15,7 @@ class AllContainer extends Component {
       }
 
     render(){
-        return <div class="all-container">
+        return <div className="all-container">
             <Search onSearchChange={this.handleSearch} label="search" showNoResults={false} placeholder="filter messages..."/>
             <br />
             <BoardList entries={this.state.results.length === 0  ? this.props.entries : this.state.results }/>

@@ -51,9 +51,9 @@ class EntryForm extends Component {
           <Form.Group widths="equal">
             <Form.Input fluid label="Message" placeholder="Message" value={this.state.message} name="message" onChange={this.handleChange}/>
             {/* <Form.Input fluid label="Category" placeholder="category" value={this.state.category} name="category" onChange={this.handleChange}/> */}
-            <div class="field">
+            <div className="field">
                 <label>Category</label>
-                <select class="ui fluid dropdown" name='category' onChange={this.handleChange}>
+                <select className="ui fluid dropdown" name='category' onChange={this.handleChange}>
                         <option default>Select</option>
                         {this.props.filterCategories.map(filterCategory => (
                         <option key={filterCategory} value={filterCategory} >
