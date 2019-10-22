@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import EntryCard from './EntryCard'
 
-class BoardList extends React.Component {
+class BoardList extends Component {
 
-  
 
     render(){
         return <div className="board-list">

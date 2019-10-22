@@ -3,7 +3,7 @@ import BoardList from './BoardList'
 import { Search } from 'semantic-ui-react'
 
 
-class AllContainer extends React.Component {
+class AllContainer extends Component {
     state = {
         results: [],
       }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class EntryCard extends React.Component {
+class EntryCard extends Component {
     
     state = {
         cardType: true,

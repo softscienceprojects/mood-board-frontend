@@ -4,8 +4,7 @@ import NavBar from './NavBar'
 import EntryForm from './EntryForm';
 
 
-
-class Main extends React.Component {
+class Main extends Component {
    
 
     render(){
