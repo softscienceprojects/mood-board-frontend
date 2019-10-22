@@ -31,12 +31,14 @@ class LoginForm extends React.Component {
   handleChange = event =>
     this.setState({ [event.target.name]: event.target.value })
 
+
   render () {
     const { email, password } = this.state
     const { handleChange, handleSubmit } = this
 
     return (
-      <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
+     
        <input type='text'
           id='emailInput'
           label='Email'

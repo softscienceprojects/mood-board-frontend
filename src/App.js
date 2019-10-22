@@ -30,7 +30,7 @@ class App extends React.Component {
           }
         })
         .catch(error => {
-          alert("you're not logged in")
+          console.log("you're not logged in")
         })
     }
   }
@@ -48,7 +48,6 @@ class App extends React.Component {
 
   signIn = user => {
     this.setState({ email: user.email }, () => localStorage.setItem('token', user.token))
-
   }
 
   signOut = () => { 
@@ -60,6 +59,8 @@ class App extends React.Component {
     this.props.history.push('/login') 
   }
 
+ 
+
   render () {
     return (
       <div className="App">
@@ -67,7 +68,8 @@ class App extends React.Component {
         <Switch>
             <Route exact path='/' component={() => 
               <Main currentUser = {this.state.email} signOut = {this.signOut} currentUser ={this.state.email} takeToSignInForm={this.takeToSignInForm}
-              entries={this.state.entries} pushNewEntryToState={this.pushNewEntryToState} filterCategories = {this.getUniqueCategoryTypes()}/> } />
+              entries={this.state.entries} pushNewEntryToState={this.pushNewEntryToState} filterCategories = {this.getUniqueCategoryTypes()}
+              /> } />
             
             <Route
               path='/login'
