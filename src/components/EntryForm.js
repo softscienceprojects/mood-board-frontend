@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import { Form } from 'semantic-ui-react'
 
-const BASE_URL = 'http://localhost:3000/'
 
-
-class EntryForm extends React.Component {
+class EntryForm extends Component {
     state ={
         message: '',
         category: '',
