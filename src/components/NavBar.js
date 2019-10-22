@@ -12,7 +12,7 @@ class NavBar extends Component {
            <img src={process.env.PUBLIC_URL + 'moodboardlogo.png'} alt="logo"/>
             {this.props.currentUser !== '' 
                 ? <Button onClick = {this.props.signOut} >Sign Out</Button>
-                : <Button onClick = {this.props.takeToSignInForm} >Log In</Button>
+                : <><Button onClick = {this.props.takeToSignInForm} >Log In</Button><Button onClick = {this.props.takeToSignUpForm} >Sign Up</Button></>
             }   
             
             
