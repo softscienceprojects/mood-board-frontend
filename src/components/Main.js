@@ -32,7 +32,7 @@ class Main extends React.Component {
     render(){
         return <div className="main-container">
             <NavBar currentUser ={this.props.currentUser} signOut = {this.props.signOut} takeToSignInForm={this.props.takeToSignInForm}/>
-            This is Main
+            This is Main, {this.props.currentUser}
             <EntryForm pushNewEntryToState={this.pushNewEntryToState} filterCategories = {this.getUniqueCategoryTypes()} />
             <AllContainer entries={this.state.entries}  />
         </div>

@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   signIn = user => {
-    this.setState({ email: user.email }, () => localStorage.setItem('token', user.id))
+    this.setState({ email: user.email }, () => localStorage.setItem('token', user.token))
 
   }
 
@@ -21,10 +21,25 @@ class App extends React.Component {
     localStorage.removeItem('token')
   }
 
-  takeToSignInForm = () => { 
-    console.log('hello')
-    this.history.push('/login') // THIS DOESN'T WORK YET
+  componentDidMount(){
+    if (localStorage.getItem('token') !== undefined) {
+      API.validate()
+        .then(data => {
+          if (data.error) {
+            throw Error(data.error)
+          } else {
+            this.signIn(data)
+            this.props.history.push('/')
+          }
+        })
+        .catch(error => {
+          alert("you're not logged in")
+        })
+    }
+  }
 
+  takeToSignInForm = () => { 
+    this.props.history.push('/login') 
   }
 
   render () {
@@ -54,4 +69,4 @@ class App extends React.Component {
   }  
 }
 
-export default App;
+export default withRouter(App);
