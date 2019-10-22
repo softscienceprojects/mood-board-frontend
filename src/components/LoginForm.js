@@ -20,7 +20,7 @@ class LoginForm extends React.Component {
           throw Error(data.error)
         } else {
           this.props.signIn(data)
-          this.props.history.push('/')   // CHANGE THIS URL TO WHATEVER YOU WANT TO REDIRECT TO WHEN SIGNED IN
+          this.props.history.push('/you')   // CHANGE THIS URL TO WHATEVER YOU WANT TO REDIRECT TO WHEN SIGNED IN
         }
       })
       .catch(error => {
