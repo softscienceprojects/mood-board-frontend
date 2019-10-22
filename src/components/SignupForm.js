@@ -7,7 +7,13 @@ const BASE_URL = 'http://localhost:3000/'
 
 class SignupForm extends React.Component {
 
-
+    render(){
+        return (
+            <div>
+                    hello this is SIGN UP form
+            </div>  
+        )  
+    }
   
 }
 
