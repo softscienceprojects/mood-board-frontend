@@ -64,7 +64,7 @@ class SignupForm extends Component {
           onChange={handleChange}
           name='password_confirmation'
           type='password'
-          placeholder='password_confirmation'
+          placeholder='confirm your password'
         />
         <br />
         <Button> Sign Up </Button>
