@@ -65,11 +65,15 @@ class App extends React.Component {
     this.props.history.push('/login') 
   }
 
+  takeToSignUpForm = () => {
+    this.props.history.push('/signup') 
+  }
+
  
   render () {
     return (
       <div className="App">
-      <NavBar currentUser={this.state.email} signOut={this.signOut} takeToSignInForm={this.takeToSignInForm} />
+      <NavBar currentUser={this.state.email} signOut={this.signOut} takeToSignInForm={this.takeToSignInForm} takeToSignUpForm={this.takeToSignUpForm} />
 
         <Switch>
             <Route exact path='/' component={() => 
@@ -82,7 +86,8 @@ class App extends React.Component {
               )}
             />
             <Route path='/signup'
-              component={routerProps => (<SignupForm {...routerProps} /> )}
+              component={routerProps => (<SignupForm {...routerProps} signIn={this.signIn} />
+              )}
             />
 
             <PrivateRoute path='/you' >
