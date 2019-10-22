@@ -12,18 +12,17 @@ class SignupForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    
-    API.signIn(this.state)
+    API.signUp({user: this.state})
       .then(data => {
         if (data.error) {
           throw Error(data.error)
         } else {
           this.props.signIn(data)
-          this.props.history.push('/')   // CHANGE THIS URL TO WHATEVER YOU WANT TO REDIRECT TO WHEN SIGNED IN
+          this.props.history.push('/you')   // CHANGE THIS URL TO WHATEVER YOU WANT TO REDIRECT TO WHEN SIGNED IN
         }
       })
       .catch(error => {
-        alert(error)
+        console.error(error)
       })
   }
 
@@ -58,7 +57,7 @@ class SignupForm extends Component {
         />
         <br />
         <input type='text'
-          id='passwordInput'
+          id='passwordConfirm'
           label='Password Confirmation'
           value={password_confirmation}
           onChange={handleChange}
