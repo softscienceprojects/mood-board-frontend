@@ -32,7 +32,7 @@ class SignupForm extends Component {
 
 
   render () {
-    const { email, password } = this.state
+    const { email, password, password_confirmation } = this.state
     const { handleChange, handleSubmit } = this
 
     return (
@@ -57,7 +57,17 @@ class SignupForm extends Component {
           placeholder='password'
         />
         <br />
-        <Button> Log In </Button>
+        <input type='text'
+          id='passwordInput'
+          label='Password Confirmation'
+          value={password_confirmation}
+          onChange={handleChange}
+          name='password_confirmation'
+          type='password'
+          placeholder='password_confirmation'
+        />
+        <br />
+        <Button> Sign Up </Button>
       </Form>
     )
   }
