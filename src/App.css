@@ -1,3 +1,6 @@
+/* #root {
+} */
+
 .App {
   text-align: center;
   /* justify-content: space-around; */
@@ -22,7 +25,7 @@
   height: 40vmin;
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -31,7 +34,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 
 .all-container {
@@ -48,10 +51,17 @@
 
 .board-list {
   display: flex;
+  justify-content: space-between;
   max-width: 80rem;
   flex-wrap: wrap;
   margin-top: 3rem;
 }
+
+.board-list::after {
+  content: " ";
+  flex: auto;
+}
+
 
 .all-container #category {
   width: 10rem;
@@ -92,10 +102,13 @@ nav {
 
 
 .entry-card {
+  /* mix-blend-mode: difference; */
   display: flex;
   border-radius: 10px;
   font-size: 1.2em;
   margin: 5px;
+  /* margin: -15px; */
+
   padding: 10px;
   height: 13rem;
   width: 13rem;
