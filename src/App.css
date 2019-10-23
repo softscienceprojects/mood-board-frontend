@@ -1,6 +1,21 @@
 .App {
   text-align: center;
-  justify-content: space-around;
+  /* justify-content: space-around; */
+  margin: 5em auto;
+  max-width: 70rem;
+}
+
+.App form {
+  width: 70rem;
+  margin: auto;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 5rem;
+  margin-bottom: 3rem;
+}
+
+.App form input {
+  margin: 10px;
 }
 
 .App-logo {
@@ -18,23 +33,51 @@
   color: white;
 }
 
-/* .App-link {
-  color: #09d3ac;
-} */
 
 .all-container {
-  margin: 5em;
+  display: flex;
+  flex-wrap: wrap;
+  /* align-self: auto; */
 }
 
 .main-container {
-  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.board-list {
+  display: flex;
+  max-width: 80rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.all-container #category {
+  width: 10rem;
+}
+
+nav {
+  background-color: #333;
+  width: 100vw;
+  height: 7.1rem;
 }
 
 .nav-bar {
-  background-color: #333;
-  color: #fff;
-  width: 100%;
-  display: inline-block;
+  max-width: 70rem;
+  margin: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-bar :first-child {
+  margin-right: auto;
+}
+
+
+.nav-bar button {
+  margin: 50px;
 }
 
 .nav-bar img {
@@ -46,20 +89,23 @@
   display: inline;
 }
 
-.board-list {
- display: inline-flex;
- flex-wrap: wrap;
- align-items: center;
-}
+
 
 .entry-card {
+  display: flex;
+  border-radius: 10px;
   font-size: 1.2em;
-  margin: 10px;
-  padding: 5px;
-  height: 10em;
-  width: 10em;
+  margin: 5px;
+  padding: 10px;
+  height: 13rem;
+  width: 13rem;
   color: #fff;
   font-weight: 900;
-  /* -webkit-text-stroke: 1px #eee; */
+  align-items: center;
+  justify-content: center;
+}
 
+.entry-card:hover {
+  filter: brightness(1.25);
+  box-shadow: d;
 }
