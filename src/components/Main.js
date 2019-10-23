@@ -10,7 +10,8 @@ class Main extends Component {
         return (
         <div className="main-container">
         {this.props.currentUser ? <EntryForm pushNewEntryToState={this.props.pushNewEntryToState} filterCategories = {this.props.filterCategories} /> : null}
-         <AllContainer entries={this.props.entries}  filterCategories = {this.props.filterCategories}/>
+         <AllContainer entries={this.props.entries}  filterCategories = {this.props.filterCategories} handleFilterChange={this.props.handleFilterChange}
+         changeSearchTerms={this.props.changeSearchTerms} searchTerms={this.props.searchTerms}/>
         </div>)
     }
 
