@@ -7,16 +7,19 @@ import {   Link, Redirect } from 'react-router-dom'
 class NavBar extends Component {
 
     render(){
-        return <div className="nav-bar">
-           
-           <img src={process.env.PUBLIC_URL + 'moodboardlogo.png'} alt="logo"/>
+        
+        return(
+            <nav >
+                <div className="nav-bar">
+              <a href="/"><img src={process.env.PUBLIC_URL + 'moodboardlogo.png'} alt="logo"/></a>
             {this.props.currentUser !== '' 
                 ? <Button onClick = {this.props.signOut} >Sign Out</Button>
                 : <><Button onClick = {this.props.takeToSignInForm} >Log In</Button><Button onClick = {this.props.takeToSignUpForm} >Sign Up</Button></>
-            }   
-            
-            
-        </div>
+            }  
+            </div> 
+            </nav>
+        )
+        
     }
 
 }

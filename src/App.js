@@ -43,7 +43,9 @@ class App extends React.Component {
   }
 
   pushNewEntryToState = (resp) => {
-    this.setState({ entries: [...this.state.entries, resp] })
+    this.setState({
+        entries: [resp, ...this.state.entries]
+    })
   }
 
   getUniqueCategoryTypes = () => {
@@ -96,9 +98,10 @@ class App extends React.Component {
   render () {
     const filteredAndSearchedEntries = this.filterEntriesBySearch(this.filterEntriesByCat())
     return (
-      <div className="App">
+      <>
       <NavBar currentUser={this.state.email} signOut={this.signOut} takeToSignInForm={this.takeToSignInForm} takeToSignUpForm={this.takeToSignUpForm} />
-
+    
+      <div className="App"> 
         <Switch>
             <Route exact path='/' component={() => 
             <Main currentUser = {this.state.email} signOut = {this.signOut} takeToSignInForm={this.takeToSignInForm}
@@ -127,6 +130,7 @@ class App extends React.Component {
           </Switch>
        
       </div>
+      </>
     )
   }  
 }
