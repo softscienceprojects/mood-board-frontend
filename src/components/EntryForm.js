@@ -46,7 +46,7 @@ class EntryForm extends Component {
 
     render(){
         return  <div>
-        <h3>Add an Entry</h3>
+        <h1>Add an Entry</h1>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths="equal">
             <Form.Input fluid label="Message" placeholder="Message" value={this.state.message} name="message" onChange={this.handleChange} maxLength="125"  />
