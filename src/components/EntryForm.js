@@ -61,12 +61,12 @@ class EntryForm extends Component {
                         </option> ))}
                 </select>
             </div>
-            <div className='inline field'>
+            {/* <div className='inline field'>
                 <div className='ui toggle checkbox'>
                     <input type='checkbox' tabIndex='0' defaultChecked={true} name='public' value={this.state.public} onChange={this.handlePublicChange}/>
                     <label>Public?</label>
                 </div>
-            </div>
+            </div> */}
           </Form.Group>
           <Form.Button>Submit</Form.Button>
         </Form>
