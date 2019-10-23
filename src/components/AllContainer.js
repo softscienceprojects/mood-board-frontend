@@ -7,7 +7,7 @@ class AllContainer extends Component {
 
     render(){
         return <div className="all-container">
-           <select className="ui fluid dropdown" name='category' onChange={this.props.handleFilterChange}>
+           <select className="ui fluid dropdown" name='category' id="category" onChange={this.props.handleFilterChange}>
                         <option default>Category Filter</option>
                         {this.props.filterCategories.map(filterCategory => (
                         <option key={filterCategory} value={filterCategory} >
