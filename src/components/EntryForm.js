@@ -4,7 +4,6 @@ import { Form } from 'semantic-ui-react'
 
 class EntryForm extends Component {
     state ={
-        visible: false,
         message: '',
         category: '',
         public: true
@@ -19,8 +18,6 @@ class EntryForm extends Component {
     handlePublicChange=(event)=>{
         this.setState({ public: !this.state.public })
     } 
-
-    handleVisibilityChange=()=>{ this.setState({ visible: !this.state.visible})}
 
 
     handleSubmit=(event)=>{
@@ -49,8 +46,7 @@ class EntryForm extends Component {
 
     render(){
         return  <div>
-        <h1 onClick={this.handleVisibilityChange} >Click to add an Entry</h1>&nbsp;&nbsp;
-        {this.state.visible 
+        {this.props.visible 
         ? <Form onSubmit={this.handleSubmit} >
             <Form.Group widths="equal">
                 <Form.Input fluid label="Message" placeholder="Message" value={this.state.message} name="message" onChange={this.handleChange} maxLength="125"  />

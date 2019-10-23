@@ -25,9 +25,10 @@ class App extends React.Component {
     email: "",
     entries: [],
     categories: [],
-    filterType: "Default",
-    searchTerms: ""
-  };
+    filterType: 'Default', 
+    searchTerms: null, 
+    visible: true
+  }
 
   componentDidMount() {
     fetch(entryURL)
@@ -113,39 +114,26 @@ class App extends React.Component {
     }
   };
 
-  render() {
-    const filteredAndSearchedEntries = this.filterEntriesBySearch(
-      this.filterEntriesByCat()
-    );
+  // --- entry form --- //
+  handleVisibilityChange=()=>{ this.setState({ visible: !this.state.visible})}
+
+
+  render () {
+    const filteredAndSearchedEntries = this.filterEntriesBySearch(this.filterEntriesByCat())
     return (
       <>
-        <NavBar
-          currentUser={this.state.email}
-          signOut={this.signOut}
-          takeToSignInForm={this.takeToSignInForm}
-          takeToSignUpForm={this.takeToSignUpForm}
-        />
-
-        <div className="App">
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <Main
-                  currentUser={this.state.email}
-                  signOut={this.signOut}
-                  takeToSignInForm={this.takeToSignInForm}
-                  entries={filteredAndSearchedEntries}
-                  pushNewEntryToState={this.pushNewEntryToState}
-                  filterCategories={[
-                    "Default",
-                    ...this.getUniqueCategoryTypes()
-                  ]}
-                  handleFilterChange={this.handleFilterChange}
-                  changeSearchTerms={this.changeSearchTerms}
-                  searchTerms={this.state.searchTerms}
-                />
+      <NavBar currentUser={this.state.email} signOut={this.signOut} takeToSignInForm={this.takeToSignInForm} takeToSignUpForm={this.takeToSignUpForm} handleVisibilityChange={this.handleVisibilityChange} />
+    
+      <div className="App"> 
+        <Switch>
+            <Route exact path='/' render={() => 
+            <Main currentUser = {this.state.email} signOut = {this.signOut} takeToSignInForm={this.takeToSignInForm}
+              entries={filteredAndSearchedEntries} pushNewEntryToState={this.pushNewEntryToState} filterCategories = {['Default', ...this.getUniqueCategoryTypes()]}
+              handleFilterChange={this.handleFilterChange} changeSearchTerms={this.changeSearchTerms} searchTerms={this.state.searchTerms} visible={this.state.visible}
+              /> } />
+            
+            <Route path='/login'
+              component={routerProps => (<LoginForm {...routerProps} signIn={this.signIn} />
               )}
             />
 
