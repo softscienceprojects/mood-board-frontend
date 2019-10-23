@@ -106,6 +106,6 @@ nav {
 }
 
 .entry-card:hover {
-  filter: brightness(1.25);
-  box-shadow: d;
+  filter: brightness(2);
+  box-shadow: 5px 5px 5px #555;
 }
