@@ -70,9 +70,9 @@ class App extends React.Component {
  // --- filter functions --- //
   filterEntriesByCat = () => {
     if (this.state.filterType==='Default') {
-      return this.state.entries
+      return this.state.entries.sort((a,b) => b.id - a.id)
     } else {
-      return this.state.entries.filter(entry=> entry.category.category_name === this.state.filterType)
+      return this.state.entries.filter(entry=> entry.category.category_name === this.state.filterType).sort((a,b) => b.id - a.id)
     }
   }
 
