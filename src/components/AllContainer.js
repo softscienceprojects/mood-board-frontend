@@ -15,23 +15,27 @@ class AllContainer extends Component {
       }
 
       handleFilter = (e) => {
-          let results = this.props.entries.filter(entry=> entry.category === e.target.value)
+          let results = this.props.entries.filter(entry=> entry.category.category_name === e.target.value)
           this.setState({results})
       }
 
 
+    handleSearchAndFilter = (func) => {
+
+    }
+
 
     render(){
         return <div className="all-container">
-           <select className="ui fluid dropdown" name='category' onChange={this.handleChange}>
-                        <option default>Select</option>
+           <select className="ui fluid dropdown" name='category' id="category" onChange={this.handleFilter}>
+                        <option default>Category Filter</option>
                         {this.props.filterCategories.map(filterCategory => (
                         <option key={filterCategory} value={filterCategory} >
                     {filterCategory}
                         </option> ))}
                 </select>
-            
-            
+            &nbsp;&nbsp;&nbsp;&nbsp;
+    
             <Search onSearchChange={this.handleSearch} label="search" showNoResults={false} placeholder="filter messages..."/>
             <br />
             <BoardList entries={this.state.results.length === 0  ? this.props.entries : this.state.results }/>
