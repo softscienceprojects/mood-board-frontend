@@ -26,7 +26,7 @@ class App extends React.Component {
     entries: [],
     categories: [],
     filterType: 'Default', 
-    searchTerms: null, 
+    searchTerms: "", 
     visible: true
   }
 
@@ -126,7 +126,7 @@ class App extends React.Component {
     
       <div className="App"> 
         <Switch>
-            <Route exact path='/' render={() => 
+            <Route exact path='/' component={() => 
             <Main currentUser = {this.state.email} signOut = {this.signOut} takeToSignInForm={this.takeToSignInForm}
               entries={filteredAndSearchedEntries} pushNewEntryToState={this.pushNewEntryToState} filterCategories = {['Default', ...this.getUniqueCategoryTypes()]}
               handleFilterChange={this.handleFilterChange} changeSearchTerms={this.changeSearchTerms} searchTerms={this.state.searchTerms} visible={this.state.visible}
