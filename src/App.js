@@ -42,7 +42,7 @@ class App extends React.Component {
 
   pushNewEntryToState = (resp) => {
     this.setState({
-        entries: [...this.state.entries, resp]
+        entries: [resp, ...this.state.entries]
     })
   }
 
@@ -69,12 +69,18 @@ class App extends React.Component {
     this.props.history.push('/signup') 
   }
 
+  getPublicEntries = () => {
+    this.state.entries.filter(entry => entry["public?"] === true)
+  }
+
  
   render () {
+    const publicEntries = this.getPublicEntries()
     return (
-      <div className="App">
+      <>
       <NavBar currentUser={this.state.email} signOut={this.signOut} takeToSignInForm={this.takeToSignInForm} takeToSignUpForm={this.takeToSignUpForm} />
-
+    
+      <div className="App"> 
         <Switch>
             <Route exact path='/' component={() => 
             <Main currentUser = {this.state.email} signOut = {this.signOut} takeToSignInForm={this.takeToSignInForm}
@@ -102,6 +108,7 @@ class App extends React.Component {
           </Switch>
        
       </div>
+      </>
     )
   }  
 }
