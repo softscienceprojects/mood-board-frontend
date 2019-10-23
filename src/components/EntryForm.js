@@ -49,7 +49,7 @@ class EntryForm extends Component {
         <h3>Add an Entry</h3>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths="equal">
-            <Form.Input fluid label="Message" placeholder="Message" value={this.state.message} name="message" onChange={this.handleChange}/>
+            <Form.Input fluid label="Message" placeholder="Message" value={this.state.message} name="message" onChange={this.handleChange} maxLength="125"  />
             {/* <Form.Input fluid label="Category" placeholder="category" value={this.state.category} name="category" onChange={this.handleChange}/> */}
             <div className="field">
                 <label>Category</label>
