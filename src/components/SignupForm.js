@@ -37,7 +37,7 @@ class SignupForm extends Component {
     const { handleChange, handleSubmit } = this
 
     return (
-        <Form onSubmit={handleSubmit}>
+       <Form onSubmit={handleSubmit}>
      
        <input type='text'
           id='emailInput'
