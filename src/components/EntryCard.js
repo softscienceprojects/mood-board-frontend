@@ -16,7 +16,7 @@ class EntryCard extends Component {
         return <div>
             
             <div className="entry-card"  onClick={this.changeCardType} style={{backgroundColor: `#${this.props.entry.colours}`}}>
-                <div className="header" >{this.state.cardType ? " " : this.props.entry.message} </div>
+                <div className="header" >{this.state.cardType ? " " : <span>{this.props.entry.message}</span>} </div>
             </div>
        
             
