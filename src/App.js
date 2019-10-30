@@ -126,7 +126,7 @@ class App extends React.Component {
     
       <div className="App"> 
         <Switch>
-            <Route exact path='/' component={() => 
+            <Route exact path='/' render={() => 
             <Main currentUser = {this.state.email} signOut = {this.signOut} takeToSignInForm={this.takeToSignInForm}
               entries={filteredAndSearchedEntries} pushNewEntryToState={this.pushNewEntryToState} filterCategories = {['Default', ...this.getUniqueCategoryTypes()]}
               handleFilterChange={this.handleFilterChange} changeSearchTerms={this.changeSearchTerms} searchTerms={this.state.searchTerms} visible={this.state.visible}
