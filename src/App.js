@@ -17,8 +17,8 @@ import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 
 import API from "./adaptors/API";
-const entryURL = "http://localhost:3000/entries";
-const categoryURL = "http://localhost:3000/categories";
+const entryURL = "https://mood-board-backend.herokuapp.com/entries";
+const categoryURL = "https://mood-board-backend.herokuapp.com/categories";
 
 class App extends React.Component {
   state = {
