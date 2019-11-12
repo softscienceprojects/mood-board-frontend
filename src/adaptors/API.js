@@ -1,4 +1,5 @@
-const baseURL = 'http://localhost:3000/'
+//const baseURL = 'http://localhost:3000/'
+const baseURL = 'https://mood-board-backend.herokuapp.com/'
 const signInURL = baseURL + 'login'
 const validateURL = baseURL + 'validate'
 const youURL = baseURL + 'you'
