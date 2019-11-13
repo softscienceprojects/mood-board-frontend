@@ -31,7 +31,7 @@ class EntryForm extends Component {
             },
             body: JSON.stringify(this.state)
         };
-        return fetch('http://localhost:3000/entries', configObj ).then(response => response.json()).then(resp => this.updateOnClient(resp));
+        return fetch('https://mood-board-backend.herokuapp.com/entries', configObj ).then(response => response.json()).then(resp => this.updateOnClient(resp));
     }
 
     updateOnClient = (json) => {
